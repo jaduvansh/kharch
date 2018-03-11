@@ -1,2 +1,2 @@
-# Kharch-Tracker
-A dashboard app for expenditure monitoring 
+# kharch-tracker
+A dashboard app for daily/monthly expenditure monitoring 
