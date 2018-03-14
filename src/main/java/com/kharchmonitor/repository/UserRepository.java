@@ -6,6 +6,6 @@ import com.kharchmonitor.persistence.entity.User;
 
 public interface UserRepository extends MongoRepository<User, String> {
 	
-	User findFirstByUserNameAndPassword(String userName, String password);
+	public User findFirstByUserNameAndPassword(String userName, String password);
 
 }

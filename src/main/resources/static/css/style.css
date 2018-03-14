@@ -1,0 +1,38 @@
+.container {
+    position: relative;
+    margin-left: 0px;
+}
+
+.top-center {
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    font-size: 50px;
+}
+
+.topright {
+    position: absolute;
+    top: 8px;
+    right: 5px;
+}
+
+img { 
+    width: 125%;
+    height: auto;
+}
+
+.generic-container {
+  width:50%;
+  margin: auto;
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #EAE7E7;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 0 30px black;
+}
+
+.floatRight{
+	float:right;
+	margin-right: 18px;
+}

@@ -6,6 +6,8 @@ public class User {
 
 	private String _id;
 
+	private String firstName;
+	private String lastName;
 	private String userName;
 	private String password;
 	private String email;
@@ -39,6 +41,18 @@ public class User {
 	}
 	public void setRole(List<String> role) {
 		this.role = role;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 	private List<String> role;
 	
