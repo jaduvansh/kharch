@@ -1,8 +1,8 @@
 (function(){
 'use strict';
-angular.module('kharchApp').factory('UserService',userService);
+angular.module('kharchApp').factory('UserService',['$http','$q','urls',userService]);
 
-    function userService() {
+    function userService($http, $q, urls) {
     	
     	var user={};
     	
@@ -14,9 +14,28 @@ angular.module('kharchApp').factory('UserService',userService);
     		return user;
     	}
     	
+    	 function create(user) {
+             console.log(user);
+             var deferred = $q.defer();
+             $http.post(urls.SIGNUP, user)
+                 .then(
+                     function (response) {
+                     	console.log(response);
+                     	user = response.data;
+                        deferred.resolve(response.data);
+                     },
+                     function (errResponse) {
+                         console.error(errResponse);
+                         deferred.reject('Error while creating user account');
+                     }
+                 );
+             return deferred.promise;
+         }
+    	
     	return {
     		setUser: setUser,
-    		getUser: getUser
+    		getUser: getUser,
+    		create: create
     	};
     }
  })();   

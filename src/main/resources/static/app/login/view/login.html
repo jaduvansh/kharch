@@ -6,8 +6,26 @@
 		</div>
 		<div class="panel-body">
 			<div class="formcontainer">
+			<form>
+					
+					<div class="form-group">
+						<label for="email">User Name:</label> <input type="text"
+							class="form-control" data-ng-model="user.userName" id="userName"
+							placeholder="Enter User Name" required data-ng-minlength="4">
+					</div>
+					<div class="form-group">
+						<label for="pwd">Password:</label> <input
+							type="password" class="form-control"
+							data-ng-model="user.password" id="pwd"
+							placeholder="Enter password" required data-ng-minlength="5">
+					</div>
+					<div class="form-actions floatRight">
+					<button type="button" data-ng-click="login()" class="btn btn-primary btn-sm" >Login</button>
+	                        <button type="button" data-ng-click="cancel()" class="btn btn-warning btn-sm">Cancel</button>	
+	                 </div>
+				</form>
 
-				<div class="row">
+				<!-- <div class="row">
 					<div class="form-group col-md-12">
 						<label class="col-md-2 control-lable" for="uname">User Name</label>
 						<div class="col-md-8">
@@ -26,13 +44,13 @@
 								placeholder="Enter your password" required ng-minlength="5" />
 						</div>
 					</div>
-				</div>
-				 <div class="row">
+				</div> -->
+				<!--  <div class="row">
 	                    <div class="form-actions floatRight">	                     
 	                        <button type="button" data-ng-click="login()" class="btn btn-primary btn-sm" >Login</button>
 	                        <button type="button" data-ng-click="cancel()" class="btn btn-warning btn-sm">Cancel</button>
 	                    </div>
-	                </div>
+	                </div> -->
 			</div>
 		</div>
 	</div>

@@ -22,6 +22,7 @@ public class UserController {
 	@Autowired
 	UserRepository userRepo;
 
+	//TODO: to be deleted before deploy
 	@CrossOrigin
 	@RequestMapping(value = "/all", method = RequestMethod.GET)
 	public List<User> read() {
@@ -36,8 +37,9 @@ public class UserController {
 	
 	@CrossOrigin
 	@RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public void create(@RequestBody User user) {
+	public User create(@RequestBody User user) {
 		userRepo.save(user);
+		return user;
 	}
 	
 	@CrossOrigin

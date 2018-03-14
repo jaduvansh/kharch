@@ -2,7 +2,8 @@ var app = angular.module('kharchApp',['ui.router']);
 
 app.constant('urls', {
     BASE: '/',
-    LOGIN : '/user/login/'
+    LOGIN : '/user/login/',
+    SIGNUP : '/user/'
 });
 
 app.config(['$stateProvider', '$urlRouterProvider',
@@ -17,6 +18,10 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 url: '/login',
                 templateUrl: 'app/login/view/login.html',
                 controller:'LoginController'
+            }).state('signup', {
+                url: '/signup',
+                templateUrl: 'app/signup/view/signup.html',
+                controller:'SignupController'
             }).state('dashboard', {
                 url: '/dashboard',
                 templateUrl: 'app/dashboard/view/dashboard.html',
