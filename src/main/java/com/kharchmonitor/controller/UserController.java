@@ -13,15 +13,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.kharchmonitor.persistence.entity.User;
 import com.kharchmonitor.repository.UserRepository;
-
+import com.kharchmonitor.translator.UserTranslator;
+import com.kharchmonitor.view.UserView;
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
 
+	
 	@Autowired
 	UserRepository userRepo;
 
+	@Autowired
+	private UserTranslator userTranslator;
+	
 	//TODO: to be deleted before deploy
 	@CrossOrigin
 	@RequestMapping(value = "/all", method = RequestMethod.GET)
@@ -31,8 +36,8 @@ public class UserController {
 	
 	@CrossOrigin
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public User login(@RequestBody User user) {
-		return userRepo.findFirstByUserNameAndPassword(user.getUserName(), user.getPassword());
+	public UserView login(@RequestBody User user) {
+		return userTranslator.toView(userRepo.findFirstByUserNameAndPassword(user.getUserName(), user.getPassword()));
 	}
 	
 	@CrossOrigin
