@@ -22,22 +22,29 @@ public class UserBusiness {
 	public List<User> findAll() {
 		return userRepo.findAll();
 	}
+	
 	public UserView login(User user) {
-		return userTranslator.toView(userRepo.findFirstByUserNameAndPassword(user.getUserName(), user.getPassword()));
+		User existingUser = userRepo.findFirstByUserNameAndPassword(user.getUserName(), user.getPassword());
+		return existingUser==null ? null : userTranslator.toView(existingUser);
 	}
+	
 	public User create(User user){
-		if(null==userRepo.findByUserName(user.getUserName())) {
-			userRepo.save(user);
-		}else {
+		if(isUsernameExist(user.getUserName())) {
 			System.out.println("Username already exist");
 			return null;
 		}
-		return user;
+		return userRepo.save(user);
 	}
+	
 	public void delete(String id) {
 		userRepo.delete(id);
 	}
+	
 	public void update(User user) {
 		userRepo.save(user);
+	}
+
+	private boolean isUsernameExist(String user) {
+		return null!=userRepo.findByUserName(user);
 	}
 }
