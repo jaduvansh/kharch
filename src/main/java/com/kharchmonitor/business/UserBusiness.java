@@ -23,9 +23,9 @@ public class UserBusiness {
 		return userRepo.findAll();
 	}
 	public UserView login(User user) {
-		return userTranslator.toView(userRepo.findFirstByUserNameAndPassword(user.getUserName(), user.getPassword()));
+		User existingUser = userRepo.findFirstByUserNameAndPassword(user.getUserName(), user.getPassword());
+		return existingUser==null ? null : userTranslator.toView(existingUser);
 	}
-	
 	public User create(User user){
 		if(null==userRepo.findByUserName(user.getUserName())) {
 			userRepo.save(user);
