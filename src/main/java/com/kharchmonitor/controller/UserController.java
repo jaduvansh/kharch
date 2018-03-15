@@ -11,52 +11,46 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.kharchmonitor.business.UserBusiness;
 import com.kharchmonitor.persistence.entity.User;
-import com.kharchmonitor.repository.UserRepository;
-import com.kharchmonitor.translator.UserTranslator;
 import com.kharchmonitor.view.UserView;
 
 @RestController
 @RequestMapping("/user")
 public class UserController {
 
-	
 	@Autowired
-	UserRepository userRepo;
+	private UserBusiness userBusiness;
 
-	@Autowired
-	private UserTranslator userTranslator;
-	
 	//TODO: to be deleted before deploy
 	@CrossOrigin
 	@RequestMapping(value = "/all", method = RequestMethod.GET)
 	public List<User> read() {
-		return userRepo.findAll();
+		return userBusiness.findAll();
 	}
 	
 	@CrossOrigin
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public UserView login(@RequestBody User user) {
-		return userTranslator.toView(userRepo.findFirstByUserNameAndPassword(user.getUserName(), user.getPassword()));
+		return userBusiness.login(user);
 	}
 	
 	@CrossOrigin
 	@RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public User create(@RequestBody User user) {
-		userRepo.save(user);
-		return user;
+	public User create(@RequestBody User user) throws Exception {
+		return userBusiness.create(user);
 	}
 	
 	@CrossOrigin
 	@RequestMapping(method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public void update(@RequestBody User user) {
-		userRepo.save(user);
+	public void update(@RequestBody User user) throws Exception {
+			userBusiness.update(user);
 	}
 
 	@CrossOrigin
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public void delete(@PathVariable String id) {
-		userRepo.delete(id);
+		userBusiness.delete(id);
 	}
 
 }
