@@ -37,20 +37,26 @@ public class UserController {
 	
 	@CrossOrigin
 	@RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public User create(@RequestBody User user) throws Exception {
+	public User create(@RequestBody User user) {
 		return userBusiness.create(user);
 	}
 	
 	@CrossOrigin
+	@RequestMapping(value = "/validate/userName/{userName}", method = RequestMethod.GET)
+	public boolean isUserNameAvailable(@PathVariable String userName){
+		return userBusiness.isUserNameAvailable(userName);
+	}
+	
+	@CrossOrigin
 	@RequestMapping(method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public void update(@RequestBody User user) throws Exception {
-			userBusiness.update(user);
+	public void update(@RequestBody User user){
+		userBusiness.updatePassword(user);
 	}
 
 	@CrossOrigin
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public void delete(@PathVariable String id) {
-		userBusiness.delete(id);
+	@RequestMapping(method = RequestMethod.DELETE)
+	public void delete(@RequestBody User user) {
+		userBusiness.delete(user);
 	}
 
 }

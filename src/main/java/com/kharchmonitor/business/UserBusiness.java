@@ -25,6 +25,7 @@ public class UserBusiness {
 	public UserView login(User user) {
 		return userTranslator.toView(userRepo.findFirstByUserNameAndPassword(user.getUserName(), user.getPassword()));
 	}
+	
 	public User create(User user){
 		if(null==userRepo.findByUserName(user.getUserName())) {
 			userRepo.save(user);
@@ -34,10 +35,16 @@ public class UserBusiness {
 		}
 		return user;
 	}
-	public void delete(String id) {
-		userRepo.delete(id);
+	public void delete(User user) {
+		User fetchedUser = userRepo.findByUserName(user.getUserName());
+		userRepo.delete(fetchedUser.get_id());
 	}
-	public void update(User user) {
-		userRepo.save(user);
+	public void updatePassword(User user) {
+		User fetchedUser = userRepo.findByUserName(user.getUserName());
+		fetchedUser.setPassword(user.getPassword());
+		userRepo.save(fetchedUser);
+	}
+	public boolean isUserNameAvailable(String userName) {
+		return (null == userRepo.findByUserName(userName));
 	}
 }
