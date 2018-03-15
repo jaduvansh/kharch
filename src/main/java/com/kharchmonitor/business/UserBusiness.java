@@ -36,13 +36,13 @@ public class UserBusiness {
 		return user;
 	}
 	public void delete(User user) {
-		User fetchedUser = userRepo.findByUserName(user.getUserName());
-		userRepo.delete(fetchedUser.get_id());
+		User existingUser = userRepo.findByUserName(user.getUserName());
+		userRepo.delete(existingUser.get_id());
 	}
 	public void updatePassword(User user) {
-		User fetchedUser = userRepo.findByUserName(user.getUserName());
-		fetchedUser.setPassword(user.getPassword());
-		userRepo.save(fetchedUser);
+		User existingUser = userRepo.findByUserName(user.getUserName());
+		existingUser.setPassword(user.getPassword());
+		userRepo.save(existingUser);
 	}
 	public boolean isUserNameAvailable(String userName) {
 		return (null == userRepo.findByUserName(userName));
