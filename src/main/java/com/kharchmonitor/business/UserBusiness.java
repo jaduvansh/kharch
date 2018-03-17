@@ -27,14 +27,13 @@ public class UserBusiness {
 		return existingUser==null ? null : userTranslator.toView(existingUser);
 	}
 	public User create(User user){
-		if(null==userRepo.findByUserName(user.getUserName())) {
-			userRepo.save(user);
-		}else {
+		if(isUserNameAvailable(user.getUserName())) {
 			System.out.println("Username already exist");
 			return null;
 		}
-		return user;
+		return userRepo.save(user);
 	}
+	
 	public void delete(User user) {
 		User existingUser = userRepo.findByUserName(user.getUserName());
 		userRepo.delete(existingUser.get_id());
@@ -45,6 +44,6 @@ public class UserBusiness {
 		userRepo.save(existingUser);
 	}
 	public boolean isUserNameAvailable(String userName) {
-		return (null == userRepo.findByUserName(userName));
+		return (null != userRepo.findByUserName(userName));
 	}
 }
