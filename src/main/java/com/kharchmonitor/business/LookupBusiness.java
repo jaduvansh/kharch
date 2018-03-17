@@ -27,14 +27,14 @@ public class LookupBusiness {
 		return lookupRepository.save(expenditureTypeLookup);
 	}
 
-	public void delete(ExpenditureTypeLookup expenditureTypeLookup) {
-		ExpenditureTypeLookup existingLookupType =lookupRepository.findByValue(expenditureTypeLookup.getValue());
+	public void delete(String expenditureTypeLookup) {
+		ExpenditureTypeLookup existingLookupType =lookupRepository.findByValue(expenditureTypeLookup);
 		lookupRepository.delete(existingLookupType.get_id());
 	}
 
-	public void update(ExpenditureTypeLookup expenditureTypeLookup, String value) {
-		ExpenditureTypeLookup existingLookupType =lookupRepository.findByValue(expenditureTypeLookup.getValue());
-		existingLookupType.setValue(value);
+	public void update(String oldValue, String newValue) {
+		ExpenditureTypeLookup existingLookupType =lookupRepository.findByValue(oldValue.toUpperCase());
+		existingLookupType.setValue(newValue);
 		lookupRepository.save(existingLookupType);
 	}
 	public boolean isTypeAvailable(ExpenditureTypeLookup expenditureTypeLookup) {
@@ -48,7 +48,7 @@ public class LookupBusiness {
 	private List<String> lookupTypesTranslator(List<ExpenditureTypeLookup> ExpenditureTypeLookups) {
 		List<String> lookupTypes =new ArrayList<String>();
 		for(ExpenditureTypeLookup typeLookup:ExpenditureTypeLookups) {
-			lookupTypes.add(typeLookup.getValue().toUpperCase());
+			lookupTypes.add(typeLookup.getValue());
 		}
 		return lookupTypes;
 	}

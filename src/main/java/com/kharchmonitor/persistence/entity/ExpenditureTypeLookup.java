@@ -12,7 +12,7 @@ public class ExpenditureTypeLookup {
 	}
 
 	public void setValue(String value) {
-		this.value = value;
+		this.value = (value==null?null:value.toUpperCase());
 	}
 
 	public String get_id() {

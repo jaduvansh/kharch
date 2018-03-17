@@ -21,6 +21,7 @@ public class LookupController {
 	@Autowired
 	private LookupBusiness lookupBusiness;
 	
+	//TODO Delete before deploy
 	@CrossOrigin
 	@RequestMapping(value = "/all", method = RequestMethod.GET)
 	public List<ExpenditureTypeLookup> read() {
@@ -38,14 +39,14 @@ public class LookupController {
 		return lookupBusiness.add(expenditureTypeLookup);
 	}
 	@CrossOrigin
-	@RequestMapping(method = RequestMethod.DELETE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public void delete(@RequestBody ExpenditureTypeLookup expenditureTypeLookup) {
-		lookupBusiness.delete(expenditureTypeLookup);
+	@RequestMapping(method = RequestMethod.DELETE, consumes = MediaType.TEXT_PLAIN_VALUE)
+	public void delete(@RequestBody String expenditureTypeLookup) {
+		lookupBusiness.delete(expenditureTypeLookup.toUpperCase());
 	}
 	@CrossOrigin
-	@RequestMapping(value="/update/{value}", method = RequestMethod.PUT)
-	public void update(@RequestBody ExpenditureTypeLookup expenditureTypeLookup,@PathVariable String value) {
-		lookupBusiness.update(expenditureTypeLookup,value);
+	@RequestMapping(value="/update/{oldValue}/{newValue}", method = RequestMethod.PUT)
+	public void update(@PathVariable String oldValue,@PathVariable String newValue) {
+		lookupBusiness.update(oldValue,newValue);
 	}
 	
 }
