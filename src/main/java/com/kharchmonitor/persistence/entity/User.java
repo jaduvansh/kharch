@@ -2,13 +2,17 @@ package com.kharchmonitor.persistence.entity;
 
 import java.util.List;
 
+import org.springframework.data.mongodb.core.index.Indexed;
+
 public class User {
 
 	private String _id;
 
+	@Indexed(unique = true)
+	private String userName;
+	
 	private String firstName;
 	private String lastName;
-	private String userName;
 	private String password;
 	private String email;
 	
@@ -54,6 +58,5 @@ public class User {
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-	private List<String> role;
-	
+	private List<String> role;	
 }
