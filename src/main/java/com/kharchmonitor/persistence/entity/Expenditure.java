@@ -1,6 +1,5 @@
 package com.kharchmonitor.persistence.entity;
 
-import java.util.Date;
 import java.util.List;
 
 public class Expenditure {
@@ -8,7 +7,7 @@ public class Expenditure {
 	private String _id;
 	
 	private String userName;
-	private Date date;
+	private String date;
 	private List<ExpenditureType> expenditureTypes;
 	
 	public String get_id() {
@@ -23,10 +22,10 @@ public class Expenditure {
 	public void setExpenditureTypes(List<ExpenditureType> expenditureTypes) {
 		this.expenditureTypes = expenditureTypes;
 	}
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 	public String getUserName() {

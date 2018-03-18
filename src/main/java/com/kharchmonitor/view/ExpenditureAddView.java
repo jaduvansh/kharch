@@ -1,19 +1,17 @@
 package com.kharchmonitor.view;
 
-import java.util.Date;
-
 public class ExpenditureAddView {
 
 	private String userName;
-	private Date date;
+	private String date;
 	private String expenditureType;
 	private float amount;
 	private String comment;
 
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 	public String getUserName() {

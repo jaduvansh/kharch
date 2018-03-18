@@ -2,8 +2,6 @@ package com.kharchmonitor.persistence.entity;
 
 public class ExpenditureType {
 
-	private String _id;
-	
 	private String type;
 	private float amount;
 	private String comment;
@@ -25,11 +23,5 @@ public class ExpenditureType {
 	}
 	public void setType(String type) {
 		this.type = type;
-	}
-	public String get_id() {
-		return _id;
-	}
-	public void set_id(String _id) {
-		this._id = _id;
 	}
 }
