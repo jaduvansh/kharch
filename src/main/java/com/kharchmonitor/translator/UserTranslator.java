@@ -14,6 +14,7 @@ public class UserTranslator {
 		userView.setEmail(user.getEmail());
 		userView.setFirstName(user.getFirstName());
 		userView.setLastName(user.getLastName());
+		userView.setUserName(user.getUserName());
 		return userView;
 
 	}

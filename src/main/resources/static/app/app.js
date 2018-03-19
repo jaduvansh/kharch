@@ -3,7 +3,8 @@ var app = angular.module('kharchApp',['ui.router']);
 app.constant('urls', {
     BASE: '/',
     LOGIN : '/user/login/',
-    SIGNUP : '/user/'
+    SIGNUP : '/user/',
+    SEARCH_EXP : '/expenditure/'
 });
 
 app.config(['$stateProvider', '$urlRouterProvider',
