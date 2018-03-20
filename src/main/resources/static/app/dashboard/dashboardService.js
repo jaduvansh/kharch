@@ -4,13 +4,18 @@ angular.module('kharchApp').factory('DashboardService',['ExpenditureService', '$
 
     function dashboardService(expenditureService, $q, lookupTypeService) {
     	
-    	var arrangeRowBasedOnHeaderOrder(header, row){
+    	var arrangeRowBasedOnHeaderOrder = function(header, row){
     		var result = {};
 	    	result.date = row.date;
-			result.expType = {};
-			for(var i=0; i< row.expenditureTypes.length; i++){
-				var expTypeObj = row.expenditureTypes[i];
-				result.expType[expTypeObj.type] = expTypeObj;
+			result.expTypes = [];
+			for(var i=0; i< header.length; i++){
+				var expTypeObj = row.expType[header[i]];
+				if(expTypeObj){
+					result.expTypes.push(expTypeObj);
+				} else {
+					result.expTypes.push({});
+				}
+				
 			}
 			return result;
     	};
@@ -20,7 +25,6 @@ angular.module('kharchApp').factory('DashboardService',['ExpenditureService', '$
     		for(var i=0; i< searchResult.length; i++){
     			rows.push(arrangeRowBasedOnHeaderOrder(header, searchResult[i]));
     		}
-    		console.log(body);
     		return rows;
     	};
     	
@@ -31,8 +35,8 @@ angular.module('kharchApp').factory('DashboardService',['ExpenditureService', '$
     				expenditureService.searchAllExpenditureByUserName(username)]).then(function(response){
     					grid.header = response[0].data;
     					console.log(grid.header);
-    				    console.log(response[1]);
     				    grid.body = arrangeBodyBasedOnHeaderOrder(grid.header, response[1]);
+    				    console.log(grid.body);
     				    deffered.resolve(grid);
     			  },function(error){
     				  deffered.reject(error);

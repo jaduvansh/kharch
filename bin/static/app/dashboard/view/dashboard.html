@@ -3,18 +3,14 @@
   <table class="table table-bordered table-hover">
    <thead>
      <tr>
+       <th >DATE</th>
        <th data-ng-repeat="header in grid.header track by $index">{{header}}</th>
      </tr>
    </thead>
    <tbody>
-     <tr>
-       <td data-ng-repeat="type in grid.header track by $index">{{type| lowercase }}</td>
-     <tr>
-     <tr>
-       <td data-ng-repeat="type in grid.header track by $index">{{type| lowercase }}</td>
-     <tr>
-     <tr>
-       <td data-ng-repeat="type in grid.header track by $index">{{type| lowercase }}</td>
+     <tr data-ng-repeat="row in grid.body track by $index">
+       <td >{{row.date}}</td>
+       <td data-ng-repeat="exp in row.expTypes track by $index">{{exp.amount}}</td>
      <tr>
    </tbody>
   </table>
