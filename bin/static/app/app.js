@@ -4,7 +4,8 @@ app.constant('urls', {
     BASE: '/',
     LOGIN : '/user/login/',
     SIGNUP : '/user/',
-    SEARCH_EXP : '/expenditure/'
+    SEARCH_EXP : '/expenditure/',
+    LOOKUP_EXPENDITURE_TYPE : '/expenditureType/'
 });
 
 app.config(['$stateProvider', '$urlRouterProvider',

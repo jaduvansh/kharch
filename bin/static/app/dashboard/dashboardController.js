@@ -2,14 +2,17 @@
 'use strict';
 
 angular.module('kharchApp').controller('DashboardController',
-    ['ExpenditureService', '$scope','UserService',  function( expenditureService, $scope, userService) {
+    ['DashboardService', '$scope','UserService',  
+    	function( dashboardService, $scope, userService) {
     	
-    	$scope.user = userService.getUser();
-    	expenditureService.searchAllExpenditureByUserName($scope.user.userName).then(function(data){
-    		 $scope.searchData = data;
-    	}, function(error){
-    		alert(error);
-    	});
-    	
-}])
+	    	$scope.user = userService.getUser();
+	    	
+	    	dashboardService.gridData($scope.user.userName).then(function(grid){
+	    		 $scope.grid = grid;
+	    	}, function(error){
+	    		alert("error loading data");
+	    	});
+	    	
+    	}
+    ])
 })();
