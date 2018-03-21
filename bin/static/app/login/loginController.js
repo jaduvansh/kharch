@@ -11,8 +11,7 @@ angular.module('kharchApp').controller('LoginController',
     		   $scope.user = {};
     		   $state.go('dashboard');
     		}, function(error){
-    			alert(error);
-    			$scope.error = error;
+    			$scope.errorMessage = error;
     		});
     	};
     	
