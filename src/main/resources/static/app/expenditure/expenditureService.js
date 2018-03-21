@@ -27,7 +27,7 @@ angular.module('kharchApp').factory('ExpenditureService',['$http', '$q', 'urls',
     	var searchAllExpenditureByUserName = function(userName){
     		userName = 'Jadu';
     		var deffered = $q.defer();
-    		$http.get(urls.SEARCH_EXP+userName).then(function(response){
+    		$http.get(urls.EXPENDITURE+userName).then(function(response){
     			var result = postProcess(response.data);
     			deffered.resolve(result);	
     		}, function(error){
@@ -36,8 +36,13 @@ angular.module('kharchApp').factory('ExpenditureService',['$http', '$q', 'urls',
     		return deffered.promise;
     	}
     	
+    	var add = function(expense){
+    		return $http.post(urls.EXPENDITURE, expense);
+    	}
+    	
     	return {
-    		searchAllExpenditureByUserName : searchAllExpenditureByUserName
+    		searchAllExpenditureByUserName : searchAllExpenditureByUserName,
+    		add : add
     		
     	};
     }

@@ -34,26 +34,6 @@ img {
     box-shadow: 0 0 30px black; 
 }
 
-.expenditure-add-container {
-  width:80%;
-  margin: 10px ;
-  padding: 20px;
-  background-color: #EAE7E7;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-shadow: 0 0 30px black; 
-}
-
-.expenditure-search-container {
-  width:90%;
-  margin: 10px ;
-  padding: 20px;
-  background-color: #EAE7E7;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-shadow: 0 0 30px black;
-}
-
 .floatRight{
 	float:right;
 	margin-right: 18px;

@@ -1,17 +1,26 @@
-<div class="col-sm-11">
- <H3 class="header">Welcome Back {{user.firstName}}, {{user.lastName}}</H3>
-  <table class="table table-bordered table-hover">
-   <thead>
-     <tr>
-       <th >DATE</th>
-       <th data-ng-repeat="header in grid.header track by $index">{{header}}</th>
-     </tr>
-   </thead>
-   <tbody>
-     <tr data-ng-repeat="row in grid.body track by $index">
-       <td >{{row.date}}</td>
-       <td data-ng-repeat="exp in row.expTypes track by $index">{{exp.amount}}</td>
-     <tr>
-   </tbody>
-  </table>
-</div>
+
+	<div class="row">
+		<div class="col-sm-6">
+			<H3 class="header">Welcome Back {{user.firstName}},{{user.lastName}}</H3>
+		</div>
+		<div class="col-sm-6">
+		   <h4><a href="/#/add-expenditure">Add an expenditure</a></h4>
+		</div>
+	</div>
+	<div class="col-sm-11">
+		<table class="table table-bordered table-hover">
+			<thead>
+				<tr>
+					<th>DATE</th>
+					<th data-ng-repeat="header in grid.header track by $index">{{header}}</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr data-ng-repeat="row in grid.body track by $index">
+					<td>{{row.date}}</td>
+					<td data-ng-repeat="exp in row.expTypes track by $index">{{exp.amount}}</td>
+				<tr>
+			</tbody>
+		</table>
+	</div>
+
