@@ -2,8 +2,8 @@
 'use strict';
 
 angular.module('kharchApp').controller('ExpenditureController',
-    ['ExpenditureService', '$scope','UserService','LookupTypeService','$timeout',  
-    	function( expenditureService, $scope, userService, lookupTypeService, $timeout) {
+    ['ExpenditureService', '$scope','UserService','LookupTypeService','$timeout', '$state', 
+    	function( expenditureService, $scope, userService, lookupTypeService, $timeout,$state) {
     	
 	    	var user = userService.getUser();
 	    	$scope.expenditure = {};
@@ -17,6 +17,10 @@ angular.module('kharchApp').controller('ExpenditureController',
 	    	
 	    	$scope.reset = function(){
 	    		$scope.expenditure = {};
+	    	}
+	    	
+	    	$scope.close = function(){
+	    		$state.go('dashboard');
 	    	}
 	    	
 	    	$scope.add = function(){

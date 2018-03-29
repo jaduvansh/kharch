@@ -1,0 +1,41 @@
+ <div class="col-sm-offset-9 col-sm-3">
+		   <h4><a href="/#/dashboard">Dashboard</a></h4>
+</div>
+
+ <div class="col-sm-offset-3 col-sm-5">
+      <div class="alert alert-success" role="alert" data-ng-show="successMessage">{{successMessage}}</div>
+	  <div class="alert alert-danger" role="alert" data-ng-show="errorMessage">{{errorMessage}}</div>
+  <div class="login-container">
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading"><span class="lead">Look Up Setup</span></div>
+		<div class="panel-body">
+	        <div class="formcontainer">
+	            <form name="myForm" class="form-horizontal">
+	                <div class="row">
+	                    <div class="form-group col-md-12">
+	                        <label class="col-md-2 control-lable" for="type">Type</label>
+	                        <div class="col-md-9">
+	                          <select data-ng-model="expenditureTypes.selected" id="type" class="form-control input-sm" required>
+	                             <option label="SELECT" value=""></option>
+	                             <option label="{{type}}" value="{{type}}" data-ng-repeat="type in expenditureTypes"></option>
+	                           </select>
+	                        </div>
+	                    </div>
+	                </div>
+
+	                
+	                <div class="row">
+	                    <div class="form-actions floatRight">
+	                        <button type="submit" id="add" data-ng-click="add()" class="btn btn-primary btn-sm" data-ng-disabled="myForm.$invalid || myForm.$pristine">Add New Type</button>
+	                        <button type="button" data-ng-click="edit()" class="btn btn-warning btn-sm" data-ng-disabled="myForm.$pristine">Edit Type</button>
+	                        <button type="button" data-ng-click="close()" class="btn btn-danger btn-sm">Close</button>
+	                    </div>
+	                </div>
+	            </form>
+    	    </div>
+		</div>	
+    </div>
+ </div></div>
+ 
+ 

@@ -32,6 +32,10 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 url: '/add-expenditure',
                 templateUrl: 'app/expenditure/view/addExpenditure.html',
                 controller:'ExpenditureController'
+            }).state('lookupType', {
+                url: '/lookupType',
+                templateUrl: 'app/lookupType/view/lookupType.html',
+                controller:'LookupTypeController'
             });
         $urlRouterProvider.otherwise('/');
     }]);
