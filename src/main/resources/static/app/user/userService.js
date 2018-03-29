@@ -4,14 +4,23 @@ angular.module('kharchApp').factory('UserService',['$http','$q','urls',userServi
 
     function userService($http, $q, urls) {
     	
-    	var user={};
+    	var user = undefined;
+    	
+    	var getUserFromLocalStorage = function(){
+    		var user = localStorage.getItem("log");
+    		return !user ? undefined : JSON.parse(user);
+    	}
     	
     	function setUser(userInfo){
+    		localStorage.setItem('log', JSON.stringify(userInfo));
     		user = userInfo;
     	}
     	
     	function getUser(){
-    		return user;
+    		if(!user){
+    			user = getUserFromLocalStorage();
+    		}
+    		return user;    		
     	}
     	
     	 function create(user) {
@@ -31,10 +40,15 @@ angular.module('kharchApp').factory('UserService',['$http','$q','urls',userServi
                  );
              return deferred.promise;
          }
+    	 
+    	 function clearUser(){
+    		 localStorage.removeItem("log");
+    	 }
     	
     	return {
     		setUser: setUser,
     		getUser: getUser,
+    		clearUser: clearUser,
     		create: create
     	};
     }
