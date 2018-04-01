@@ -2,11 +2,11 @@
 'use strict';
 
 angular.module('kharchApp').controller('HomeController',
-    ['HomeService', '$scope',  function( homeService, $scope) {
+    ['$rootScope', '$scope', '$state', function( $rootScope, $scope, $state) {
     	
-    	$scope.user = {
-    			userName : 'Dashboard'
-    	}
+     $rootScope.$on('unauthorized', function() {
+    	 $state.go('login');
+     });
     	
 }])
 })();

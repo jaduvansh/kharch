@@ -8,27 +8,29 @@
   <div class="login-container">
     <div class="panel panel-default">
         <!-- Default panel contents -->
-        <div class="panel-heading"><span class="lead">Look Up Setup</span></div>
+        <div class="panel-heading"><span class="lead">Edit Look Up Type</span></div>
 		<div class="panel-body">
 	        <div class="formcontainer">
 	            <form name="myForm" class="form-horizontal">
 	                <div class="row">
 	                    <div class="form-group col-md-12">
-	                        <label class="col-md-2 control-lable" for="type">Type</label>
+	                        <label class="col-md-2 control-lable" for="type">Old Type</label>
 	                        <div class="col-md-9">
-	                          <select data-ng-model="expenditureTypes.selected" id="type" class="form-control input-sm" required>
-	                             <option label="SELECT" value=""></option>
-	                             <option label="{{type}}" value="{{type}}" data-ng-repeat="type in expenditureTypes"></option>
-	                           </select>
+	                            <input type="text" data-ng-model="expenditure.date" id="type" class="form-control input-sm" disabled="disabled"/>
 	                        </div>
 	                    </div>
 	                </div>
-
-	                
+					<div class="row">
+	                    <div class="form-group col-md-12">
+	                        <label class="col-md-2 control-lable" for="type">New Type</label>
+	                        <div class="col-md-9">
+	                            <input type="text" data-ng-model="expenditure.date" id="type" class="form-control input-sm" required/>
+	                        </div>
+	                    </div>
+	                </div>
 	                <div class="row">
 	                    <div class="form-actions floatRight">
-	                        <button type="submit" id="add" data-ng-click="add()" class="btn btn-primary btn-sm">Add New Type</button>
-	                        <button type="button" data-ng-click="edit()" class="btn btn-warning btn-sm" data-ng-disabled="myForm.$pristine">Edit Type</button>
+	                        <button type="submit" id="add" data-ng-click="edit()" class="btn btn-primary btn-sm">Edit Type</button>
 	                        <button type="button" data-ng-click="close()" class="btn btn-danger btn-sm">Close</button>
 	                    </div>
 	                </div>

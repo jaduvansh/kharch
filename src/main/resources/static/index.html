@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html data-ng-app="kharchApp">
+<html data-ng-app="kharchApp" data-ng-controller="HomeController as homeCtrl">
 	<head>
 	<meta charset="utf-8" />
 	<title>kharch</title>
@@ -9,9 +9,10 @@
         
 		<script src="lib/angular.min.js"></script>
 		<script src="lib/angular-ui-router.min.js"></script>
-		
-		<script src="app/app.js"></script>
+			
+		<script src="app/app.js"></script>	
 		<script src="app/user/userService.js"></script>
+		<script src="app/apiInterceptor.js"></script>
 		<script src="app/home/homeService.js"></script>
 		<script src="app/home/homeController.js"></script>
 		<script src="app/login/loginService.js"></script>

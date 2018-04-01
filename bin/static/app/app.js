@@ -8,8 +8,8 @@ app.constant('urls', {
     LOOKUP_EXPENDITURE_TYPE : '/expenditureType/'
 });
 
-app.config(['$stateProvider', '$urlRouterProvider',
-    function($stateProvider, $urlRouterProvider) {
+app.config(['$stateProvider', '$urlRouterProvider','$httpProvider',
+    function($stateProvider, $urlRouterProvider, $httpProvider) {
 
         $stateProvider
             .state('home', {
@@ -36,7 +36,12 @@ app.config(['$stateProvider', '$urlRouterProvider',
                 url: '/lookupType',
                 templateUrl: 'app/lookupType/view/lookupType.html',
                 controller:'LookupTypeController'
+            }).state('addLookupType', {
+                url: '/addLookupType',
+                templateUrl: 'app/lookupType/view/addLookupType.html',
+                controller:'LookupTypeController'
             });
         $urlRouterProvider.otherwise('/');
+        $httpProvider.interceptors.push('APIInterceptor');
     }]);
 

@@ -2,7 +2,7 @@
 'use strict';
 
 angular.module('kharchApp').controller('LoginController',
-    ['LoginService', '$scope', '$state','UserService',  function( loginService, $scope, $state, userService) {
+    ['LoginService', '$scope', '$state','UserService','$rootScope',  function( loginService, $scope, $state, userService, $rootScope) {
     	
     	$scope.user = {};
     	$scope.login = function(){

@@ -18,6 +18,10 @@ angular.module('kharchApp').controller('LookupTypeController',
     	
     	$scope.edit = function(){
     	}
+    	
+    	$scope.add = function(){
+    		$state.go('addLookupType');
+    	}
     }
 ])
 })();
