@@ -21,12 +21,12 @@ public class LookupController {
 	@Autowired
 	private LookupBusiness lookupBusiness;
 	
-	//TODO Delete before deploy
-	@CrossOrigin
-	@RequestMapping(value = "/all", method = RequestMethod.GET)
-	public List<ExpenditureTypeLookup> read() {
-		return lookupBusiness.findAll();
-	}
+//	//TODO Delete before deploy
+//	@CrossOrigin
+//	@RequestMapping(value = "/all", method = RequestMethod.GET)
+//	public List<ExpenditureTypeLookup> read() {
+//		return lookupBusiness.findAll();
+//	}
 	
 	@CrossOrigin
 	@RequestMapping(method = RequestMethod.GET)

@@ -1,6 +1,6 @@
 app.factory('APIInterceptor',['$rootScope', function($rootScope) {
     var service = this;
-    var protectedUrls = ['dashboard.html','addExpenditure.html','lookupType.html','addLookupType.html'];
+    var unProtectedUrls = ['home.html','login.html','signup.html'];
     var getUserFromLocalStorage = function(){
 		var user = localStorage.getItem("log");
 		return !user ? undefined : JSON.parse(user);
@@ -16,7 +16,7 @@ app.factory('APIInterceptor',['$rootScope', function($rootScope) {
     service.request = function(config) {   
     	console.log(config.url);
     	var user = getUserFromLocalStorage();  	
-    	if(contains(protectedUrls, config.url) && !user){
+    	if(!contains(unProtectedUrls, config.url) && !user){
     		console.log('login');
     		$rootScope.$broadcast('unauthorized');
     	}
