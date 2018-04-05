@@ -13,13 +13,32 @@ angular.module('kharchApp').factory('ExpenditureService',['$http', '$q', 'urls',
     		return result;
     	};
     	
+    	var addExpenditure = function(expTypeObj,result){
+    		var expenditure = {};
+			expenditure.amount = expTypeObj.amount;
+			expenditure.comment = expTypeObj.comment;
+			expenditure.expDetails = [expTypeObj];
+			result.expType[expTypeObj.type] = expenditure;
+    	};
+    	
+    	var updateExpenditure = function(expTypeObj,result){
+    		var expenditure = result.expType[expTypeObj.type];
+    		expenditure.comment = expenditure.comment + "\n" + expTypeObj.comment;
+			expenditure.amount += expTypeObj.amount;
+			expenditure.expDetails.push(expTypeObj);
+    	};
+    	
     	var processByDate = function(objPerDate){
     		var result = {};
 	    	result.date = objPerDate.date;
 			result.expType = {};
 			for(var i=0; i< objPerDate.expenditureTypes.length; i++){
 				var expTypeObj = objPerDate.expenditureTypes[i];
-				result.expType[expTypeObj.type] = expTypeObj;
+				if(!result.expType[expTypeObj.type]){
+					addExpenditure(expTypeObj,result);
+				}else{
+					updateExpenditure(expTypeObj,result);
+				}
 			}
 			return result;
     	}
