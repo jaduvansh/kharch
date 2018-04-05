@@ -23,10 +23,14 @@ angular.module('kharchApp').factory('ExpenditureService',['$http', '$q', 'urls',
     	
     	var updateExpenditure = function(expTypeObj,result){
     		var expenditure = result.expType[expTypeObj.type];
-    		expenditure.comment = expenditure.comment + "\n" + expTypeObj.comment;
+    		expenditure.comment = getComment(expenditure.comment)+ "\n" + getComment(expTypeObj.comment);
 			expenditure.amount += expTypeObj.amount;
 			expenditure.expDetails.push(expTypeObj);
     	};
+    	
+    	var getComment = function(comment){
+    		return comment || "";
+    	}
     	
     	var processByDate = function(objPerDate){
     		var result = {};
