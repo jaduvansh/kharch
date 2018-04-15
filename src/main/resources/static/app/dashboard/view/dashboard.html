@@ -15,6 +15,9 @@
 	</h4>
 </div>
 
+<div class="col-sm-6">
+	<h4 class="text-red">Total Spent Amount : {{spentAmount}}</h4>
+</div>
 <div class="col-sm-11">
 	<table class="table table-bordered table-hover">
 		<thead>
@@ -27,8 +30,13 @@
 			<tr data-ng-repeat="row in grid.body track by $index">
 				<td>{{row.date}}</td>
 				<td data-ng-repeat="exp in row.expTypes track by $index"
-					title="{{exp.comment}}">{{exp.amount}}</td>
-			<tr>
+					title="{{exp.comment}}"><a>{{exp.amount}}</a></td>
+			</tr>
+			<tr class="footer-lightblue">
+				<td>Total</td>
+				<td data-ng-repeat="footer in grid.footer track by $index">{{footer.amount}}</td>
+			</tr>
+			
 		</tbody>
 	</table>
 </div>

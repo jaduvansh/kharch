@@ -22,7 +22,7 @@ img {
 }
 
 .header{
-	color:"blue"
+	color:blue;
 }
 
 .login-container {
@@ -37,4 +37,12 @@ img {
 .floatRight{
 	float:right;
 	margin-right: 18px;
+}
+
+.footer-lightblue{
+	background-color: lightblue;
+}
+
+.text-red{
+	color:red;
 }
