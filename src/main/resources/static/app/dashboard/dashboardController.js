@@ -2,8 +2,8 @@
 'use strict';
 
 angular.module('kharchApp').controller('DashboardController',
-    ['DashboardService', '$scope','UserService','$state',  
-    	function( dashboardService, $scope, userService, $state) {
+    ['DashboardService', '$scope','UserService','$state','$timeout',  
+    	function( dashboardService, $scope, userService, $state, $timeout) {
     	
 	    	$scope.user = userService.getUser();
 	    	
@@ -28,6 +28,13 @@ angular.module('kharchApp').controller('DashboardController',
 	    	$scope.logout = function(){
 	    		userService.clearUser();
 	    	}
+	    	
+	    	$scope.exportToExcel = function(tableId){ // ex: '#my-table'
+	            var exportHref = dashboardService.tableToExcel(tableId,'april2018');
+	            $timeout(function() {
+	            	location.href=exportHref;
+	            },100); // trigger download
+	        }
 	    	
     	}
     ])

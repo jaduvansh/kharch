@@ -17,8 +17,12 @@
 
 <div class="col-sm-6">
 	<h4 class="text-red">Total Spent Amount : {{spentAmount}}</h4>
+</div><div>	
+	<button class="btn btn-link" ng-click="exportToExcel('#tableToExport')">
+      Export to Excel
+    </button>
 </div>
-<div class="col-sm-11">
+<div class="col-sm-11" id="tableToExport">
 	<table class="table table-bordered table-hover">
 		<thead>
 			<tr>
