@@ -40,7 +40,7 @@
 	                    <div class="form-group col-md-12">
 	                        <label class="col-md-2 control-lable" for="amount">Amount</label>
 	                        <div class="col-md-9">
-	                            <input type="text" ng-model="expenditure.amount" id="amount" class="form-control input-sm" placeholder="0.00" required ng-pattern="ctrl.onlyIntegers"/>
+	                            <input type="text" data-ng-model="expenditure.amount" id="amount" class="form-control input-sm" placeholder="0.00" required ng-pattern="ctrl.onlyIntegers"/>
 	                        </div>
 	                    </div>
 	                </div>
@@ -49,15 +49,15 @@
 	                    <div class="form-group col-md-12">
 	                        <label class="col-md-2 control-lable" for="salary">Comment</label>
 	                        <div class="col-md-9">
-	                            <textarea  ng-model="expenditure.comment" id="comment" class="form-control input-sm" placeholder="Enter your comment" rows="3"></textarea>
+	                            <textarea  data-ng-model="expenditure.comment" id="comment" class="form-control input-sm" placeholder="Enter your comment" rows="3"></textarea>
 	                        </div>
 	                    </div>
 	                </div>
 
 	                <div class="row">
 	                    <div class="form-actions floatRight">
-	                        <button type="submit" id="add" data-ng-click="add()" class="btn btn-primary btn-sm" ng-disabled="myForm.$invalid || myForm.$pristine">Add</button>
-	                        <button type="button" data-ng-click="reset()" class="btn btn-warning btn-sm" ng-disabled="myForm.$pristine">Reset Form</button>
+	                        <button type="submit" id="add" data-ng-click="add()" class="btn btn-primary btn-sm" data-ng-disabled="myForm.$invalid || myForm.$pristine">Add</button>
+	                        <button type="button" data-ng-click="reset()" class="btn btn-warning btn-sm" data-ng-disabled="myForm.$pristine">Reset Form</button>
 	                        <button type="button" data-ng-click="close()" class="btn btn-danger btn-sm">Close</button>
 	                    </div>
 	                </div>

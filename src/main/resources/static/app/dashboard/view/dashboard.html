@@ -17,15 +17,16 @@
 
 <div class="col-sm-6">
 	<h4 class="text-red">Total Spent Amount : {{spentAmount}}</h4>
-</div><div>	
-	<button class="btn btn-link" ng-click="exportToExcel('#tableToExport')">
-      Export to Excel
-    </button>
 </div>
-<div class="col-sm-11" id="tableToExport">
-	<table class="table table-bordered table-hover">
+<div>	
+    <h4 class="btn btn-link" data-ng-click="exportToExcel('#tableToExport')">
+      Export to Excel
+    </h4>
+</div>
+<div class="col-sm-11">
+	<table class="table table-bordered table-hover table-striped">
 		<thead>
-			<tr>
+			<tr class="footer-lightblue">
 				<th>DATE</th>
 				<th data-ng-repeat="header in grid.header track by $index">{{header}}</th>
 			</tr>

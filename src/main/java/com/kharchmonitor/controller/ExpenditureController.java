@@ -12,25 +12,36 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.kharchmonitor.business.ExpenditureBusiness;
-import com.kharchmonitor.persistence.entity.Expenditure;
-import com.kharchmonitor.view.ExpenditureAddView;
+import com.kharchmonitor.translator.ExpenditureTranslator;
+import com.kharchmonitor.view.ExpenditureSearchView;
+import com.kharchmonitor.view.ExpenditureView;
 
 @RestController
 @RequestMapping(value = "/expenditure")
 public class ExpenditureController {
 	
 	@Autowired
+	ExpenditureTranslator translator;
+	
+	@Autowired
 	ExpenditureBusiness expenditureBusiness;
 	
 	@CrossOrigin
 	@RequestMapping(value="/{userName}",method = RequestMethod.GET)
-	public List<Expenditure> getAllExpenditure(@PathVariable String userName){
-		return expenditureBusiness.getAllExpenditure(userName);
+	public List<ExpenditureSearchView> getAllExpenditureByUserName(@PathVariable String userName){
+		return translator.toView(expenditureBusiness.getAllExpenditure(userName));
+	}
+	
+	@CrossOrigin
+	@RequestMapping(value="/{userName}/{monthYear}",method = RequestMethod.GET)
+	public List<ExpenditureSearchView> getAllExpenditureByUserNameAndMonth(@PathVariable String userName, @PathVariable String monthYear){
+		String[] arr = monthYear.split("-");
+		return translator.toView(expenditureBusiness.getAllExpenditureByMonth(userName, arr[0], arr[1]));
 	}
 	
 	@CrossOrigin
 	@RequestMapping(method= RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public void addExpenditure(@RequestBody ExpenditureAddView expenditureAddView){
-		expenditureBusiness.addExpenditure(expenditureAddView);
+	public void addExpenditure(@RequestBody ExpenditureView expenditureView){
+		expenditureBusiness.addExpenditure(expenditureView);
 	}
 }
