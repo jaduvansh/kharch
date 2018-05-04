@@ -9,6 +9,8 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.kharchmonitor.persistence.entity.Expenditure;
@@ -21,6 +23,7 @@ import com.kharchmonitor.view.ExpenditureView;
 public class ExpenditureBusiness {
 
 	private final DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+	private Sort sort = new Sort(Direction.ASC,"date");
 
 //	private static final String DATE_FORMAT = "dd-MM-yyyy hh:mm:ss";
 
@@ -68,7 +71,7 @@ public class ExpenditureBusiness {
 		Expenditure expenditure = new Expenditure();
 		expenditure.setExpenditureTypes(new ArrayList<ExpenditureType>());
 		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(dateFormat.parse(expenditureView.getDate() + " 00:00:00"));
+		calendar.setTime(dateFormat.parse(expenditureView.getDate() + " 10:00:00"));
 
 
 //		convertTimeZone(expenditureView.getDate() + " 00:00:00");
@@ -80,7 +83,7 @@ public class ExpenditureBusiness {
 	public List<Expenditure> getAllExpenditureByMonthYear(String userName, String monthYear) {
 		String[] arr = monthYear.split("-");
 		return expenditureRepository.findByUsernameMonthAndYear(userName, Integer.parseInt(arr[1]),
-				Integer.parseInt(arr[0]));
+				Integer.parseInt(arr[0]),sort);
 	}
 
 	public List<Expenditure> findByUsernameDateRange(String userName, String monthYear) {
@@ -92,7 +95,8 @@ public class ExpenditureBusiness {
 			c1.add(Calendar.MONTH, 1);
 			Date toDate = new Date(c1.getTimeInMillis());
 
-			findByUsernameDateRange = expenditureRepository.findByUsernameDateRange(userName, fromDate, toDate);
+			
+			findByUsernameDateRange = expenditureRepository.findByUsernameDateRange(userName, fromDate, toDate, sort);
 
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
