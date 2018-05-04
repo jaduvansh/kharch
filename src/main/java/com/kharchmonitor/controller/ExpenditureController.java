@@ -35,8 +35,8 @@ public class ExpenditureController {
 	@CrossOrigin
 	@RequestMapping(value="/{userName}/{monthYear}",method = RequestMethod.GET)
 	public List<ExpenditureSearchView> getAllExpenditureByUserNameAndMonth(@PathVariable String userName, @PathVariable String monthYear){
-		String[] arr = monthYear.split("-");
-		return translator.toView(expenditureBusiness.getAllExpenditureByMonth(userName, arr[0], arr[1]));
+		//return translator.toView(expenditureBusiness.getAllExpenditureByMonthYear(userName, monthYear));
+		return translator.toView(expenditureBusiness.findByUsernameDateRange(userName, monthYear));
 	}
 	
 	@CrossOrigin

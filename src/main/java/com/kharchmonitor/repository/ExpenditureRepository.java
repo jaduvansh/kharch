@@ -18,6 +18,9 @@ public interface ExpenditureRepository extends MongoRepository<Expenditure, Stri
 	public List<Expenditure> findByMonthAndYearOrderByDate(int year, int month);
 	
 	@Query("{$and:[{userName:{$eq:?0}},{$expr:{$and:[{$eq:[{$year:'$date'}, ?1]}, {$eq:[{$month:'$date'}, ?2]}]}}]}")
-	public List<Expenditure> findByUsernameMonthAndYearOrderByDate(String userName, int year, int month);
+	public List<Expenditure> findByUsernameMonthAndYear(String userName, int year, int month);
+	
+	@Query("{$and:[{userName:{$eq:?0}},{date:{$gte: ?1,$lt: ?2}}]}")
+	public List<Expenditure> findByUsernameDateRange(String userName, Date fromdate, Date toDate);
 }
 

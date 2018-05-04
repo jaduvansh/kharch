@@ -49,8 +49,11 @@ angular.module('kharchApp').factory('ExpenditureService',['$http', '$q', 'urls',
     	
     	var searchAllExpenditureByUserName = function(userName){
     		userName = 'Jadu';
+    		var d = new Date();
+    		var month = d.getMonth() + 1;
+    		var year = d.getFullYear()
     		var deffered = $q.defer();
-    		$http.get(urls.EXPENDITURE+userName).then(function(response){
+    		$http.get(urls.EXPENDITURE+userName+"/"+month+"-"+year).then(function(response){
     			var result = postProcess(response.data);
     			deffered.resolve(result);	
     		}, function(error){
