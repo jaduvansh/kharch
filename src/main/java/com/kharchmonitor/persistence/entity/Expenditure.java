@@ -7,7 +7,7 @@ public class Expenditure {
 	
 	private String _id;
 	
-	private String userName;
+	private String groupName;
 	private Date date;
 	private List<ExpenditureType> expenditureTypes;
 	
@@ -29,11 +29,11 @@ public class Expenditure {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public String getUserName() {
-		return userName;
+	public String getGroupName() {
+		return groupName;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setGroupName(String userName) {
+		this.groupName = userName;
 	}
 
 }

@@ -31,8 +31,8 @@ public class ExpenditureBusiness {
 	@Autowired
 	ExpenditureTypeTranslator expenditureTypeTranslator;
 
-	public List<Expenditure> getAllExpenditure(String userName) {
-		return expenditureRepository.findByUserNameOrderByDate(userName);
+	public List<Expenditure> getAllExpenditure(String groupName) {
+		return expenditureRepository.findByGroupNameOrderByDate(groupName);
 	}
 
 	public void addExpenditure(ExpenditureView expenditureView) {
@@ -52,7 +52,7 @@ public class ExpenditureBusiness {
 	}
 
 	private Expenditure getExpenditure(ExpenditureView expenditureView) throws ParseException {
-		Expenditure existingExpenditure = expenditureRepository.findByUserNameAndDate(expenditureView.getUserName(),
+		Expenditure existingExpenditure = expenditureRepository.findByGroupNameAndDate(expenditureView.getGroupName(),
 				dateFormat.parse(expenditureView.getDate() + " 10:00:00"));
 
 		if (isExpenditureExistOnDate(existingExpenditure)) {
@@ -73,23 +73,23 @@ public class ExpenditureBusiness {
 		calendar.setTime(dateFormat.parse(expenditureView.getDate() + " 10:00:00"));
 
 		expenditure.setDate(calendar.getTime());
-		expenditure.setUserName(expenditureView.getUserName());
+		expenditure.setGroupName(expenditureView.getGroupName());
 		return expenditure;
 	}
 
-	public List<Expenditure> getAllExpenditureByMonthYear(String userName, String monthYear) {
+	public List<Expenditure> getAllExpenditureByMonthYear(String groupName, String monthYear) {
 		String[] arr = monthYear.split("-");
-		return expenditureRepository.findByUsernameMonthAndYear(userName, Integer.parseInt(arr[1]),
+		return expenditureRepository.findByGroupnameMonthAndYear(groupName, Integer.parseInt(arr[1]),
 				Integer.parseInt(arr[0]),orderByDate);
 	}
 
-	public List<Expenditure> findByUsernameDateRange(String userName, String monthYear) {
+	public List<Expenditure> findByGroupNameDateRange(String groupName, String monthYear) {
 		List<Expenditure> findByUsernameDateRange = null;
 		try {
 			Date fromDate = dateFormat.parse("01-" + monthYear + " 00:00:00");
 			Date toDate = getToDate(fromDate);
 			
-			findByUsernameDateRange = expenditureRepository.findByUsernameDateRange(userName, fromDate, toDate, orderByDate);
+			findByUsernameDateRange = expenditureRepository.findByGroupnameDateRange(groupName, fromDate, toDate, orderByDate);
 
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
@@ -99,9 +99,9 @@ public class ExpenditureBusiness {
 	}
 
 	private Date getToDate(Date fromDate) {
-		Calendar c1 = Calendar.getInstance();
-		c1.setTime(fromDate);
-		c1.add(Calendar.MONTH, 1);
-		return new Date(c1.getTimeInMillis());
+		Calendar date = Calendar.getInstance();
+		date.setTime(fromDate);
+		date.add(Calendar.MONTH, 1);
+		return new Date(date.getTimeInMillis());
 	}
 }

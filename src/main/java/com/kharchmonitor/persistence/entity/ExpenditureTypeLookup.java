@@ -3,8 +3,6 @@ package com.kharchmonitor.persistence.entity;
 public class ExpenditureTypeLookup {
 
 	private String _id;
-	
-	
 	private String value;
 
 	public String getValue() {

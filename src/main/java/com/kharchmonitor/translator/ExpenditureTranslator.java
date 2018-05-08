@@ -17,7 +17,7 @@ public class ExpenditureTranslator {
 	public ExpenditureSearchView toView(Expenditure entity) {
 		
 		ExpenditureSearchView view = new ExpenditureSearchView();
-		view.setUserName(entity.getUserName());
+		view.setGroupName(entity.getGroupName());
 		view.setExpenditureTypes(entity.getExpenditureTypes());
 		view.setDate(dateFormat.format(entity.getDate()));
 		return view;

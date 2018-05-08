@@ -2,7 +2,7 @@ package com.kharchmonitor.view;
 
 public class ExpenditureView {
 
-	private String userName;
+	private String groupName;
 	private String date;
 	private String expenditureType;
 	private float amount;
@@ -14,11 +14,11 @@ public class ExpenditureView {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	public String getUserName() {
-		return userName;
+	public String getGroupName() {
+		return groupName;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setGroupName(String userName) {
+		this.groupName = userName;
 	}
 	public String getComment() {
 		return comment;

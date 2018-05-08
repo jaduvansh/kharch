@@ -27,16 +27,15 @@ public class ExpenditureController {
 	ExpenditureBusiness expenditureBusiness;
 	
 	@CrossOrigin
-	@RequestMapping(value="/{userName}",method = RequestMethod.GET)
-	public List<ExpenditureSearchView> getAllExpenditureByUserName(@PathVariable String userName){
-		return translator.toView(expenditureBusiness.getAllExpenditure(userName));
+	@RequestMapping(value="/{groupName}",method = RequestMethod.GET)
+	public List<ExpenditureSearchView> getAllExpenditureByGroupName(@PathVariable String groupName){
+		return translator.toView(expenditureBusiness.getAllExpenditure(groupName));
 	}
 	
 	@CrossOrigin
-	@RequestMapping(value="/{userName}/{monthYear}",method = RequestMethod.GET)
-	public List<ExpenditureSearchView> getAllExpenditureByUserNameAndMonth(@PathVariable String userName, @PathVariable String monthYear){
-		//return translator.toView(expenditureBusiness.getAllExpenditureByMonthYear(userName, monthYear));
-		return translator.toView(expenditureBusiness.findByUsernameDateRange(userName, monthYear));
+	@RequestMapping(value="/{groupName}/{monthYear}",method = RequestMethod.GET)
+	public List<ExpenditureSearchView> getAllExpenditureByGroupNameAndMonth(@PathVariable String groupName, @PathVariable String monthYear){
+		return translator.toView(expenditureBusiness.findByGroupNameDateRange(groupName, monthYear));
 	}
 	
 	@CrossOrigin

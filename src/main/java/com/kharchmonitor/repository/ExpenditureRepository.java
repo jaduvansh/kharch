@@ -11,14 +11,14 @@ import com.kharchmonitor.persistence.entity.Expenditure;
 
 public interface ExpenditureRepository extends MongoRepository<Expenditure, String> {
 
-	public Expenditure findByUserNameAndDate(String userName, Date date);
+	public Expenditure findByGroupNameAndDate(String groupName, Date date);
 
-	public List<Expenditure> findByUserNameOrderByDate(String userName);
+	public List<Expenditure> findByGroupNameOrderByDate(String groupName);
 	
-	@Query("{$and:[{userName:{$eq:?0}},{$expr:{$and:[{$eq:[{$year:'$date'}, ?1]}, {$eq:[{$month:'$date'}, ?2]}]}}]}")
-	public List<Expenditure> findByUsernameMonthAndYear(String userName, int year, int month,Sort orderBydate);
+	@Query("{$and:[{groupName:{$eq:?0}},{$expr:{$and:[{$eq:[{$year:'$date'}, ?1]}, {$eq:[{$month:'$date'}, ?2]}]}}]}")
+	public List<Expenditure> findByGroupnameMonthAndYear(String groupName, int year, int month,Sort orderBydate);
 	
-	@Query("{$and:[{userName:{$eq:?0}},{date:{$gte: ?1,$lt: ?2}}]}")
-	public List<Expenditure> findByUsernameDateRange(String userName, Date fromdate, Date toDate,Sort orderBydate);
+	@Query("{$and:[{groupName:{$eq:?0}},{date:{$gte: ?1,$lt: ?2}}]}")
+	public List<Expenditure> findByGroupnameDateRange(String groupName, Date fromdate, Date toDate,Sort orderBydate);
 }
 

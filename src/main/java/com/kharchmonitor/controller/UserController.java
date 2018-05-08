@@ -1,5 +1,7 @@
 package com.kharchmonitor.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -21,11 +23,11 @@ public class UserController {
 	private UserBusiness userBusiness;
 
 	//TODO: to be deleted before deploy
-//	@CrossOrigin
-//	@RequestMapping(value = "/all", method = RequestMethod.GET)
-//	public List<User> read() {
-//		return userBusiness.findAll();
-//	}
+	@CrossOrigin
+	@RequestMapping(value = "/all", method = RequestMethod.GET)
+	public List<User> read() {
+		return userBusiness.findAll();
+	}
 	
 	@CrossOrigin
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -33,11 +35,11 @@ public class UserController {
 		return userBusiness.login(user);
 	}
 	
-//	@CrossOrigin
-//	@RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-//	public User create(@RequestBody User user) {
-//		return userBusiness.create(user);
-//	}
+	@CrossOrigin
+	@RequestMapping(method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public User create(@RequestBody User user) {
+		return userBusiness.create(user);
+	}
 	
 	@CrossOrigin
 	@RequestMapping(value = "/validate/userName/{userName}", method = RequestMethod.GET)

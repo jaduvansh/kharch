@@ -6,7 +6,7 @@ import com.kharchmonitor.persistence.entity.ExpenditureType;
 
 public class ExpenditureSearchView {
 
-	private String userName;
+	private String groupName;
 	private String date;
 	private List<ExpenditureType> expenditureTypes;
 	
@@ -22,11 +22,11 @@ public class ExpenditureSearchView {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	public String getUserName() {
-		return userName;
+	public String getGroupName() {
+		return groupName;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setGroupName(String groupName) {
+		this.groupName = groupName;
 	}
 
 }
