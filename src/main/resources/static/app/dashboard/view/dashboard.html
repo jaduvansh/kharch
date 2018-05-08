@@ -15,14 +15,20 @@
 	</h4>
 </div>
 
-<div class="col-sm-6">
+<div class="col-sm-12">
 	<h4 class="text-red">Total Spent Amount : {{spentAmount}}</h4>
+	<h4 class="btn btn-link"
+		data-ng-click="exportToExcel('#tableToExport')">Export to Excel</h4>
 </div>
-<div>	
-    <h4 class="btn btn-link" data-ng-click="exportToExcel('#tableToExport')">
-      Export to Excel
-    </h4>
+<div class="col-sm-6">
+
+	<h4>
+		<a>Pick a month:</a> <input id="dateInput" type="month" name="input"
+			data-ng-model="date.value" placeholder="yyyy-MM" min="2018-01"
+			required data-ng-change="searchAllExpenditureByUserNameMonthAndYear()" />
+	</h4>
 </div>
+
 <div class="col-sm-11" id="tableToExport">
 	<table class="table table-bordered table-hover table-striped">
 		<thead>
@@ -41,7 +47,7 @@
 				<td>Total</td>
 				<td data-ng-repeat="footer in grid.footer track by $index">{{footer.amount}}</td>
 			</tr>
-			
+
 		</tbody>
 	</table>
 </div>

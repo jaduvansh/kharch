@@ -24,6 +24,10 @@
 			return result;
 		};
 
+		var searchAllExpenditureByUserNameMonthAndYear = function(userName, month, year){
+			expenditureService.searchAllExpenditureByUserNameMonthAndYear(userName, month, year);
+		};
+		
 		var arrangeBodyBasedOnHeaderOrder = function(header, searchResult) {
 			var rows = [];
 			for (var i = 0; i < searchResult.length; i++) {
@@ -54,15 +58,16 @@
 			return amount;
 		}
 
-		var gridData = function(username) {
+		var gridData = function(username, month, year) {
 			var grid = {};
 			var deffered = $q.defer();
 			$q
 					.all(
+							
 							[
 									lookupTypeService.getExpenditureTypes(),
 									expenditureService
-											.searchAllExpenditureByUserName(username) ])
+											.searchAllExpenditureByUserName(username, month, year) ])
 					.then(
 							function(response) {
 								grid.header = response[0].data;
@@ -99,7 +104,8 @@
 		}
 		return {
 			gridData : gridData,
-			tableToExcel : tableToExcel
+			tableToExcel : tableToExcel,
+			searchAllExpenditureByUserNameMonthAndYear : searchAllExpenditureByUserNameMonthAndYear
 
 		};
 	}
