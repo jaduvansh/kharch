@@ -1,5 +1,6 @@
 package com.kharchmonitor.persistence.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -15,6 +16,8 @@ public class User {
 	private String lastName;
 	private String password;
 	private String email;
+	
+	private List<Group> groups = new ArrayList<Group>();
 	
 	public String get_id() {
 		return _id;
@@ -40,12 +43,7 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public List<String> getRole() {
-		return role;
-	}
-	public void setRole(List<String> role) {
-		this.role = role;
-	}
+
 	public String getLastName() {
 		return lastName;
 	}
@@ -58,5 +56,10 @@ public class User {
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-	private List<String> role;	
+	public List<Group> getGroups() {
+		return groups;
+	}
+	public void addGroup(Group group) {
+		this.groups.add(group);
+	}
 }

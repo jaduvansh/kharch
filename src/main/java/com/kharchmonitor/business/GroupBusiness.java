@@ -1,6 +1,5 @@
 package com.kharchmonitor.business;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +20,11 @@ public class GroupBusiness {
 	private UserRepository userRepo;
 
 	public Group create(Group group) {
+		groupRepo.save(group);
 		User user = userRepo.findByUserName(group.getCreatedBy());
-		List<User> users = new ArrayList<>();
-		users.add(user);
-		group.setUsers(users);
-		return groupRepo.save(group);
+		user.addGroup(group);
+		userRepo.save(user);
+		return group;
 	}
 
 	public List<Group> findAll() {
@@ -35,8 +34,9 @@ public class GroupBusiness {
 	public Group addUser(String groupId, String userName) {
 		Group group = groupRepo.findOne(groupId);
 		User user = userRepo.findByUserName(userName);
-		group.addUser(user);
-		return groupRepo.save(group);
+		user.addGroup(group);
+		userRepo.save(user);
+		return group;
 	}
 
 }

@@ -1,13 +1,12 @@
 package com.kharchmonitor.persistence.entity;
 
 import java.util.Date;
-import java.util.List;
 
 public class Group {
 
 	private String _id;
 	private String groupName;
-	private List<User> users;
+	//private List<User> users;
 	private Date createdDate;
 	private String createdBy;
 	
@@ -23,15 +22,15 @@ public class Group {
 	public void setGroupName(String groupName) {
 		this.groupName = groupName;
 	}
-	public List<User> getUsers() {
-		return users;
-	}	
-	public void setUsers(List<User> users) {
-		this.users = users;
-	}	
-	public void addUser(User user) {
-		this.users.add(user);
-	}
+//	public List<User> getUsers() {
+//		return users;
+//	}	
+//	public void setUsers(List<User> users) {
+//		this.users = users;
+//	}	
+//	public void addUser(User user) {
+//		this.users.add(user);
+//	}
 	public String getCreatedBy() {
 		return createdBy;
 	}

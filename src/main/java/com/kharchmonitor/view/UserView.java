@@ -1,11 +1,16 @@
 package com.kharchmonitor.view;
 
+import java.util.List;
+
+import com.kharchmonitor.persistence.entity.Group;
+
 public class UserView {
 
 	private String firstName;
 	private String lastName;
 	private String email;
 	private String userName;
+	private List<Group> groups;
 	
 	public String getEmail() {
 		return email;
@@ -30,5 +35,11 @@ public class UserView {
 	}
 	public void setUserName(String userName) {
 		this.userName = userName;
+	}
+	public List<Group> getGroups() {
+		return groups;
+	}
+	public void setGroups(List<Group> groups) {
+		this.groups = groups;
 	}
 }

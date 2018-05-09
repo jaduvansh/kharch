@@ -24,7 +24,7 @@ angular.module('kharchApp').controller('ExpenditureController',
 	    	}
 	    	
 	    	$scope.add = function(){
-	    		$scope.expenditure.userName = user.unserName || "Jadu";
+	    		$scope.expenditure.groupName = user.activeGroup;
 	    		expenditureService.add($scope.expenditure).then(function(){
 		    		 $scope.successMessage = "Expenditure has been added sucefully";
 		    		 $scope.reset();

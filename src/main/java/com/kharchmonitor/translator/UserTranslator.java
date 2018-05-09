@@ -15,6 +15,7 @@ public class UserTranslator {
 		userView.setFirstName(user.getFirstName());
 		userView.setLastName(user.getLastName());
 		userView.setUserName(user.getUserName());
+		userView.setGroups(user.getGroups());
 		return userView;
 
 	}

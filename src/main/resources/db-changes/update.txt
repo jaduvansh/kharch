@@ -1,0 +1,2 @@
+//update all expenditure group name
+db.expenditure.update({}, {$set: {"groupName" : "Sweet Home"}},false,true)

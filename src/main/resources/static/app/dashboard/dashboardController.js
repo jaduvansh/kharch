@@ -13,7 +13,7 @@ angular.module('kharchApp').controller('DashboardController',
         		var month = d.getMonth() + 1;
         		var year = d.getFullYear();
         		$scope.date.value = d;
-    			dashboardService.gridData($scope.user.userName, month, year).then(function(grid){
+    			dashboardService.gridData($scope.user.activeGroup, month, year).then(function(grid){
 		    		 $scope.grid = grid;
 		    		 $scope.spentAmount = calculateSpentAmount(grid.footer);
 		    	}, function(error){
@@ -34,7 +34,7 @@ angular.module('kharchApp').controller('DashboardController',
     			var date = $scope.date.value;
     			var month = date.getMonth()+1;
     			var year = date.getFullYear();
-    			dashboardService.gridData($scope.user.userName, month, year).then(function(grid){
+    			dashboardService.gridData($scope.user.activeGroup, month, year).then(function(grid){
 		    		 $scope.grid = grid;
 		    		 $scope.spentAmount = calculateSpentAmount(grid.footer);
 		    	}, function(error){

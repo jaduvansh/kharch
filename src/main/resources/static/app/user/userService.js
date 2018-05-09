@@ -12,6 +12,12 @@ angular.module('kharchApp').factory('UserService',['$http','$q','urls',userServi
     	}
     	
     	function setUser(userInfo){
+    		var groups =[];
+    		for(var i=0; i< userInfo.groups.length; i++){
+    			groups.push(userInfo.groups[i].groupName);
+    		}
+    		userInfo.groups = groups;
+    		userInfo.activeGroup = groups[0];
     		localStorage.setItem('log', JSON.stringify(userInfo));
     		user = userInfo;
     	}

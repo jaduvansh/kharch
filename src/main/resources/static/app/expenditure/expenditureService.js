@@ -47,10 +47,9 @@ angular.module('kharchApp').factory('ExpenditureService',['$http', '$q', 'urls',
 			return result;
     	}
     	
-    	var searchAllExpenditureByUserNameMonthAndYear = function(userName, month, year){
-    		userName = 'Jadu';
+    	var searchAllExpenditureByUserNameMonthAndYear = function(groupName, month, year){
     		var deffered = $q.defer();
-    		$http.get(urls.EXPENDITURE+userName+"/"+month+"-"+year).then(function(response){
+    		$http.get(urls.EXPENDITURE+groupName+"/"+month+"-"+year).then(function(response){
     			var result = postProcess(response.data);
     			deffered.resolve(result);	
     		}, function(error){
@@ -59,11 +58,9 @@ angular.module('kharchApp').factory('ExpenditureService',['$http', '$q', 'urls',
     		return deffered.promise;
     	}
     	
-    	var searchAllExpenditureByUserName = function(userName, month, year){
-    		userName = 'Jadu';
-    		
+    	var searchAllExpenditureByUserName = function(groupName, month, year){
     		var deffered = $q.defer();
-    		$http.get(urls.EXPENDITURE+userName+"/"+month+"-"+year).then(function(response){
+    		$http.get(urls.EXPENDITURE+groupName+"/"+month+"-"+year).then(function(response){
     			var result = postProcess(response.data);
     			deffered.resolve(result);	
     		}, function(error){

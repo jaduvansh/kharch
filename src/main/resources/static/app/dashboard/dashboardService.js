@@ -58,7 +58,7 @@
 			return amount;
 		}
 
-		var gridData = function(username, month, year) {
+		var gridData = function(groupName, month, year) {
 			var grid = {};
 			var deffered = $q.defer();
 			$q
@@ -67,7 +67,7 @@
 							[
 									lookupTypeService.getExpenditureTypes(),
 									expenditureService
-											.searchAllExpenditureByUserName(username, month, year) ])
+											.searchAllExpenditureByUserName(groupName, month, year) ])
 					.then(
 							function(response) {
 								grid.header = response[0].data;
