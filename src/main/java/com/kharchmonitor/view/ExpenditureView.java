@@ -3,6 +3,7 @@ package com.kharchmonitor.view;
 public class ExpenditureView {
 
 	private String groupName;
+	private String userName;
 	private String date;
 	private String expenditureType;
 	private float amount;
@@ -37,5 +38,11 @@ public class ExpenditureView {
 	}
 	public void setExpenditureType(String expenditureType) {
 		this.expenditureType = expenditureType;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 }

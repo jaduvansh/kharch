@@ -9,6 +9,7 @@ public class ExpenditureType {
 	private String comment;
 	private String userName;
 	private Date createdDate;
+	private String date;
 	
 	public String getComment() {
 		return comment;
@@ -39,5 +40,11 @@ public class ExpenditureType {
 	}
 	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
+	}
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
 	}
 }
