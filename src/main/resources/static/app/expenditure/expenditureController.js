@@ -10,6 +10,8 @@ angular.module('kharchApp').controller('ExpenditureController',
 	    	
 	    	lookupTypeService.getExpenditureTypes().then(function(response){
 	    		$scope.expenditureTypes = response.data;
+	    		var date = new Date();
+	    		$scope.expenditure.date=date;
 	    	},function(error){
 	    		console.log(error);
 	    		alert("error loading lookup type");

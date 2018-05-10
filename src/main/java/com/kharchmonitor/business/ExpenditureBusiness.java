@@ -23,7 +23,8 @@ import com.kharchmonitor.view.ExpenditureView;
 public class ExpenditureBusiness {
 
 	private final DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
-	private Sort orderByDate = new Sort(Direction.ASC,"date");
+	private final DateFormat changeFormat = new SimpleDateFormat("dd-MM-yyyy");
+	private Sort orderByDate = new Sort(Direction.ASC, "date");
 
 	@Autowired
 	ExpenditureRepository expenditureRepository;
@@ -53,12 +54,16 @@ public class ExpenditureBusiness {
 
 	private Expenditure getExpenditure(ExpenditureView expenditureView) throws ParseException {
 		Expenditure existingExpenditure = expenditureRepository.findByGroupNameAndDate(expenditureView.getGroupName(),
-				dateFormat.parse(expenditureView.getDate() + " 10:00:00"));
+				dateFormat.parse(changeDateFormat(expenditureView.getDate()) + " 10:00:00"));
 
 		if (isExpenditureExistOnDate(existingExpenditure)) {
 			return existingExpenditure;
 		}
 		return createExpenditure(expenditureView);
+	}
+
+	private String changeDateFormat(Date date) {
+		return changeFormat.format(date);
 	}
 
 	private boolean isExpenditureExistOnDate(Expenditure expenditure) {
@@ -68,9 +73,9 @@ public class ExpenditureBusiness {
 	private Expenditure createExpenditure(ExpenditureView expenditureView) throws ParseException {
 		Expenditure expenditure = new Expenditure();
 		expenditure.setExpenditureTypes(new ArrayList<ExpenditureType>());
-	
+
 		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(dateFormat.parse(expenditureView.getDate() + " 10:00:00"));
+		calendar.setTime(dateFormat.parse(changeDateFormat(expenditureView.getDate()) + " 10:00:00"));
 
 		expenditure.setDate(calendar.getTime());
 		expenditure.setGroupName(expenditureView.getGroupName());
@@ -80,7 +85,7 @@ public class ExpenditureBusiness {
 	public List<Expenditure> getAllExpenditureByMonthYear(String groupName, String monthYear) {
 		String[] arr = monthYear.split("-");
 		return expenditureRepository.findByGroupnameMonthAndYear(groupName, Integer.parseInt(arr[1]),
-				Integer.parseInt(arr[0]),orderByDate);
+				Integer.parseInt(arr[0]), orderByDate);
 	}
 
 	public List<Expenditure> findByGroupNameDateRange(String groupName, String monthYear) {
@@ -88,8 +93,9 @@ public class ExpenditureBusiness {
 		try {
 			Date fromDate = dateFormat.parse("01-" + monthYear + " 00:00:00");
 			Date toDate = getToDate(fromDate);
-			
-			findByUsernameDateRange = expenditureRepository.findByGroupnameDateRange(groupName, fromDate, toDate, orderByDate);
+
+			findByUsernameDateRange = expenditureRepository.findByGroupnameDateRange(groupName, fromDate, toDate,
+					orderByDate);
 
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block

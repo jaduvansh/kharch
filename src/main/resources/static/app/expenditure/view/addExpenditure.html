@@ -1,70 +1,91 @@
- <div class="col-sm-offset-9 col-sm-3">
-		   <h4><a href="/#/dashboard">Dashboard</a></h4>
+
+<div class="col-sm-offset-9 col-sm-3">
+	<h4>
+		<a href="/#/dashboard">Dashboard</a>
+	</h4>
 </div>
 
- <div class="col-sm-offset-3 col-sm-5">
-      <div class="alert alert-success" role="alert" data-ng-show="successMessage">{{successMessage}}</div>
-	  <div class="alert alert-danger" role="alert" data-ng-show="errorMessage">{{errorMessage}}</div>
-  <div class="login-container">
-    <div class="panel panel-default">
-        <!-- Default panel contents -->
-        <div class="panel-heading"><span class="lead">Add Expenditure</span></div>
-		<div class="panel-body">
-	        <div class="formcontainer">
-	            <form name="myForm" class="form-horizontal">
-	                <div class="row">
-	                    <div class="form-group col-md-12">
-	                        <label class="col-md-2 control-lable" for="date">Date</label>
-	                        <div class="col-md-9">
-	                            <input type="text" ng-model="expenditure.date" id="date" class="form-control input-sm"
-	                              placeholder="dd-mm-yyyy" required/>
-	                        </div>
-	                    </div>
-	                </div>
+<div class="col-sm-offset-3 col-sm-5">
+	<div class="alert alert-success" role="alert"
+		data-ng-show="successMessage">{{successMessage}}</div>
+	<div class="alert alert-danger" role="alert"
+		data-ng-show="errorMessage">{{errorMessage}}</div>
+	<div class="login-container">
+		<div class="panel panel-default">
+			<!-- Default panel contents -->
+			<div class="panel-heading">
+				<span class="lead">Add Expenditure</span>
+			</div>
+			<div class="panel-body">
+				<div class="formcontainer">
+					<form name="myForm" class="form-horizontal">
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-2 control-lable" for="date">Date</label>
+								<div class="col-md-9">
+									<input type="date" data-ng-model="expenditure.date" id="date"
+										class="form-control input-sm" placeholder="dd-mm-yyyy"
+										required onkeydown="return false" 
+										  />
+								</div>
+							</div>
+						</div>
 
-	                <div class="row">
-	                    <div class="form-group col-md-12">
-	                        <label class="col-md-2 control-lable" for="type">Type</label>
-	                        <div class="col-md-9">
-	                          <select ng-model="expenditure.expenditureType" id="type" class="form-control input-sm" required>
-	                             <option label="Select" value=""></option>
-	                             <option label="{{type}}" value="{{type}}" data-ng-repeat="type in expenditureTypes track by $index"></option>
-	                          </select>
-	                            <!--       <select ng-model="expenditure.expenditureType" id="type" class="form-control input-sm" required
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-2 control-lable" for="type">Type</label>
+								<div class="col-md-9">
+									<select data-ng-model="expenditure.expenditureType" id="type"
+										class="form-control input-sm" required>
+										<option label="Select" value=""></option>
+										<option label="{{type}}" value="{{type}}"
+											data-ng-repeat="type in expenditureTypes track by $index"></option>
+									</select>
+									<!--       <select ng-model="expenditure.expenditureType" id="type" class="form-control input-sm" required
 	                                  ng-options="x for x in expenditureTypes"></select> -->
-	                        </div>
-	                    </div>
-	                </div>
+								</div>
+							</div>
+						</div>
 
-	                <div class="row">
-	                    <div class="form-group col-md-12">
-	                        <label class="col-md-2 control-lable" for="amount">Amount</label>
-	                        <div class="col-md-9">
-	                            <input type="text" data-ng-model="expenditure.amount" id="amount" class="form-control input-sm" placeholder="0.00" required ng-pattern="ctrl.onlyIntegers"/>
-	                        </div>
-	                    </div>
-	                </div>
-	
-	                <div class="row">
-	                    <div class="form-group col-md-12">
-	                        <label class="col-md-2 control-lable" for="salary">Comment</label>
-	                        <div class="col-md-9">
-	                            <textarea  data-ng-model="expenditure.comment" id="comment" class="form-control input-sm" placeholder="Enter your comment" rows="3"></textarea>
-	                        </div>
-	                    </div>
-	                </div>
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-2 control-lable" for="amount">Amount</label>
+								<div class="col-md-9">
+									<input type="number" data-ng-model="expenditure.amount"
+										id="amount" class="form-control input-sm" placeholder="0.00"
+										required data-ng-pattern="ctrl.onlyIntegers" />
+								</div>
+							</div>
+						</div>
 
-	                <div class="row">
-	                    <div class="form-actions floatRight">
-	                        <button type="submit" id="add" data-ng-click="add()" class="btn btn-primary btn-sm" data-ng-disabled="myForm.$invalid || myForm.$pristine">Add</button>
-	                        <button type="button" data-ng-click="reset()" class="btn btn-warning btn-sm" data-ng-disabled="myForm.$pristine">Reset Form</button>
-	                        <button type="button" data-ng-click="close()" class="btn btn-danger btn-sm">Close</button>
-	                    </div>
-	                </div>
-	            </form>
-    	    </div>
-		</div>	
-    </div>
- </div></div>
- 
- 
+						<div class="row">
+							<div class="form-group col-md-12">
+								<label class="col-md-2 control-lable" for="salary">Comment</label>
+								<div class="col-md-9">
+									<textarea data-ng-model="expenditure.comment" id="comment"
+										class="form-control input-sm" placeholder="Enter your comment"
+										rows="3"></textarea>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="form-actions floatRight">
+								<button type="submit" id="add" data-ng-click="add()"
+									class="btn btn-primary btn-sm"
+									data-ng-disabled="myForm.$invalid || myForm.$pristine">Add</button>
+								<button type="button" data-ng-click="reset()"
+									class="btn btn-warning btn-sm"
+									data-ng-disabled="myForm.$pristine">Reset Form</button>
+								<button type="button" data-ng-click="close()"
+									class="btn btn-danger btn-sm">Close</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
