@@ -24,10 +24,6 @@
 			return result;
 		};
 
-		var searchAllExpenditureByUserNameMonthAndYear = function(userName, month, year){
-			expenditureService.searchAllExpenditureByUserNameMonthAndYear(userName, month, year);
-		};
-		
 		var arrangeBodyBasedOnHeaderOrder = function(header, searchResult) {
 			var rows = [];
 			for (var i = 0; i < searchResult.length; i++) {
@@ -105,8 +101,6 @@
 		return {
 			gridData : gridData,
 			tableToExcel : tableToExcel,
-			searchAllExpenditureByUserNameMonthAndYear : searchAllExpenditureByUserNameMonthAndYear
-
 		};
 	}
 })();
