@@ -30,6 +30,18 @@ angular.module('kharchApp').controller('DashboardController',
     			return spentAmount;
     		};
     		
+    		$scope.searchAllExpenditureByUserNameMonthAndYear = function(){
+    			var date = $scope.date.value;
+    			var month = date.getMonth()+1;
+    			var year = date.getFullYear();
+    			dashboardService.gridData($scope.user.activeGroup, month, year).then(function(grid){
+		    		 $scope.grid = grid;
+		    		 $scope.spentAmount = calculateSpentAmount(grid.footer);
+		    	}, function(error){
+		    		alert("error loading data");
+		    	});
+    		}
+	    	
 	    	$scope.logout = function(){
 	    		userService.clearUser();
 	    	}
