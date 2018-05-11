@@ -31,6 +31,8 @@ angular.module('kharchApp').controller('ExpenditureController',
 	    		expenditureService.add($scope.expenditure).then(function(){
 		    		 $scope.successMessage = "Expenditure has been added sucefully";
 		    		 $scope.reset();
+		    		 var date = new Date();
+			    	 $scope.expenditure.date=date;
 		    		 $timeout(function(){
 		    			 $scope.successMessage = undefined;
 		    		 }, 2000);
