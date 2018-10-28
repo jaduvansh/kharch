@@ -42,7 +42,9 @@ img {
 .footer-lightblue{
 	background-color: lightblue !important; 
 }
-
+.footer-lighterblue{
+	background-color: #41e8f4 !important; 
+}
 .text-red{
 	color:red;
 }
